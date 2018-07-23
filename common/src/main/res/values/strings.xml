@@ -1,0 +1,4 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">common</string>
+    <string name="net_dialog" tools:keep="@string/net_dialog">正在加载...</string>
+</resources>

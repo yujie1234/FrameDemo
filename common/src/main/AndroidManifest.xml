@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.common">
+    <!--网络权限-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--获取网络信息状态，如当前的网络连接是否有效-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--允许程序访问Wi-Fi网络状态信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--写sdcard权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--读sdcard权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--照相机权限-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--打电话权限-->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!--读联系人权限-->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!--写联系人权限-->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <application>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.android.common.provider"
+            android:grantUriPermissions="true"
+            android:exported="false"
+            >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name=".util.PermissionUtils$PermissionActivity"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:multiprocess="true"
+            android:theme="@style/ActivityTranslucent"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+    </application>
+</manifest>

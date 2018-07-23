@@ -1,0 +1,54 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.mob.sdk:MobSDK:+'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        //resolve dependencies过慢，最大原因是访问库的速度太慢了
+        maven {  url 'http://maven.aliyun.com/nexus/content/groups/public' }
+        maven { url 'https://jitpack.io' }
+        maven { url "https://maven.google.com" }
+    }
+}
+
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+
+ext {
+
+
+    compile_sdk_version             = 27
+    build_tools_version             = "27.0.3"
+    application_id                  = "com.example.werwolf.framedemo"
+    min_sdk_version                 = 16
+    target_sdk_version              = 27
+    version_code                    = 1
+    version_name                    = "1.0"
+
+
+    support_version                 = "27.0.2"
+    daggerSdkVersion                = "2.7"
+    multidexVersion                 = "1.0.2"
+    arouter_compiler_version        = "1.1.4"
+    arouter_api_version             = "1.3.1"
+
+    barVersion                      = '2.3.0'
+    fastjsonVersion                 = '1.2.39'
+    gsonVersion                     = '2.8.4'
+}
+

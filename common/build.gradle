@@ -1,0 +1,96 @@
+apply plugin: 'com.android.library'
+
+android {
+    dataBinding {
+        enabled true
+    }
+
+    compileSdkVersion compile_sdk_version
+    defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            zipAlignEnabled false
+            shrinkResources false
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+}
+
+dependencies {
+
+    //支持库
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api "com.android.support:appcompat-v7:$support_version"
+    api "com.android.support:design:$support_version"
+    api "com.android.support:support-v4:$support_version"
+    api "com.android.support:cardview-v7:$support_version"
+    api "com.android.support:support-annotations:$support_version"
+    api "com.android.support:recyclerview-v7:$support_version"
+    api "com.android.support:support-v13:$support_version"
+    api "com.android.support:percent:$support_version"
+    api "com.android.support:support-core-utils:$support_version"
+    api 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    //依赖注入框架
+    api "com.google.dagger:dagger:$daggerSdkVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerSdkVersion"
+
+
+    //网络框架
+    api 'com.lzy.net:okgo:3.0.4'
+    api 'com.lzy.net:okrx:1.0.2'
+    api 'com.lzy.net:okrx2:2.0.2'
+    api 'com.lzy.net:okserver:2.0.5'
+
+
+    //material-dialogs
+    api "com.afollestad.material-dialogs:core:0.9.4.5"
+    api "com.afollestad.material-dialogs:commons:0.9.4.5"
+
+    //状态栏框架
+    api "com.gyf.barlibrary:barlibrary:$barVersion"
+
+    //解决多个方法问题
+    api "com.android.support:multidex:$multidexVersion"
+
+    //路由框架
+    api "com.alibaba:arouter-api:$arouter_api_version"
+
+    //数据解析框架
+    api "com.alibaba:fastjson:$fastjsonVersion"
+    api "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    //databinding套装
+    api "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:2.2.0"
+    api "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:2.2.0"
+
+    //rx管理View的生命周期
+    api "com.trello.rxlifecycle2:rxlifecycle:2.2.1"
+    api "com.trello.rxlifecycle2:rxlifecycle-components:2.2.1"
+
+    //rxbindingRxBinding 是一组开源库，它允许你以RxJava的形式来处理UI事件(自定义事件)
+    api "com.jakewharton.rxbinding2:rxbinding:2.1.1"
+
+    //glide图片加载库
+    api "com.github.bumptech.glide:glide:4.6.1"
+    annotationProcessor "com.github.bumptech.glide:compiler:4.6.1"
+
+    //RecyclerAdapter
+    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30"
+}
