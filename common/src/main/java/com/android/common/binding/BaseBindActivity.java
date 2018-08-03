@@ -19,7 +19,7 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
  * Created by sky on 2017/03/08.
  */
 
-public abstract class BaseBindActivity <V extends ViewDataBinding, VM extends BaseViewModel> extends RxAppCompatActivity implements IBaseActivity {
+public abstract class BaseBindActivity <V extends ViewDataBinding, VM extends BaseViewModel> extends RxAppCompatActivity {
 
     protected V binding;
     protected VM viewModel;
@@ -30,19 +30,17 @@ public abstract class BaseBindActivity <V extends ViewDataBinding, VM extends Ba
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initParam();
         initViewDataBinding();
         initTitleView();
-        initData();
-        initViewObservable();
+        getDatabinding();
         viewModel.onCreate();
-        viewModel.registerRxBus();
+        initView();
     }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        viewModel.removeRxBus();
         viewModel.onDestroy();
         viewModel = null;
         ImmersionBar.with(this).destroy();
@@ -86,8 +84,6 @@ public abstract class BaseBindActivity <V extends ViewDataBinding, VM extends Ba
 
     /**
      * 初始化ViewModel的id
-     *
-     * @return BR的id
      */
     public abstract int initVariableId();
 
@@ -98,39 +94,22 @@ public abstract class BaseBindActivity <V extends ViewDataBinding, VM extends Ba
      */
     public abstract VM initViewModel();
 
+    public abstract V getDatabinding();
 
-    /*设置左边返回键和名称*/
-    public void setBarColor(int titleColor) {
-        ImmersionBar.with(this)
-                .fitsSystemWindows(true)
-                .statusBarDarkFont(true, 0.2f)
-                .statusBarDarkFont(true)
-//                .statusBarColorInt(getResources().getColor(R.color.white))
-                .barColor(titleColor)
-                .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)  //单独指定软键盘模式;
-                .init();
-    }
+    public abstract void initView();
+
 
     public void setTitleParams(String title,int color){
         tvTitle.setText(title);
         rlTitle.setVisibility(View.VISIBLE);
         rlTitle.setBackgroundColor(getResources().getColor(color));
-        setBarColor(color);
-    }
-
-
-    @Override
-    public void initParam() {
-
-    }
-
-    @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void initViewObservable() {
-
+        ImmersionBar.with(this)
+                .fitsSystemWindows(true)
+                .statusBarDarkFont(true, 0.2f)
+                .statusBarDarkFont(true)
+//                .statusBarColorInt(getResources().getColor(R.color.white))
+                .barColor(color)
+                .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)  //单独指定软键盘模式;
+                .init();
     }
 }

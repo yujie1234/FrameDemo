@@ -48,8 +48,8 @@ dependencies {
     api 'com.android.support.constraint:constraint-layout:1.1.2'
 
     //依赖注入框架
-    api "com.google.dagger:dagger:$daggerSdkVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerSdkVersion"
+//    api "com.google.dagger:dagger:$daggerSdkVersion"
+//    annotationProcessor "com.google.dagger:dagger-compiler:$daggerSdkVersion"
 
 
     //网络框架

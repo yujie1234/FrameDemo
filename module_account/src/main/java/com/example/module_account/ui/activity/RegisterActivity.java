@@ -1,7 +1,7 @@
 package com.example.module_account.ui.activity;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.android.common.base.BaseBindActivity;
+import com.android.common.binding.BaseBindActivity;
 import com.example.module_account.BR;
 import com.example.module_account.R;
 import com.example.module_account.databinding.ActivityRegisterBinding;
@@ -26,8 +26,12 @@ public class RegisterActivity extends BaseBindActivity<ActivityRegisterBinding,R
     }
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initView() {
         setTitleParams("注册",R.color.white);
+    }
+
+    @Override
+    public ActivityRegisterBinding getDatabinding() {
+        return binding;
     }
 }

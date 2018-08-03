@@ -1,11 +1,10 @@
 if (isModule.toBoolean()) {
     include ':common',
-            ':standbycredit'
-//            ':app',
-//            ':moddle_main'
-//            ':module_account',
-//            ':pdf_module',
-//            ':pdf_module'
+            ':standbycredit',
+            ':app',
+            ':moddle_main',
+            ':module_account',
+            ':pdf_module'
 } else {
     include ':app',
             ':standbycredit',

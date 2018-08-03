@@ -11,20 +11,12 @@ import android.view.ViewGroup;
 /**
  * Created by goldze on 2017/6/15.
  */
-public abstract class BaseBindFragment<V extends ViewDataBinding, VM extends BaseViewModel> extends com.trello.rxlifecycle2.components.support.RxFragment implements IBaseActivity {
+public abstract class BaseBindFragment<V extends ViewDataBinding, VM extends BaseViewModel> extends com.trello.rxlifecycle2.components.support.RxFragment {
     protected V binding;
     protected VM viewModel;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initParam();
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
-        viewModel.removeRxBus();
         viewModel.onDestroy();
         viewModel = null;
     }
@@ -46,18 +38,9 @@ public abstract class BaseBindFragment<V extends ViewDataBinding, VM extends Bas
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        initData();
-
-        initViewObservable();
-
+        getDatabinding();
+        initView();
         viewModel.onCreate();
-
-        viewModel.registerRxBus();
-    }
-
-    @Override
-    public void initParam() {
-
     }
 
     //刷新布局
@@ -88,17 +71,7 @@ public abstract class BaseBindFragment<V extends ViewDataBinding, VM extends Bas
      */
     public abstract VM initViewModel();
 
-    @Override
-    public void initData() {
+    public abstract V getDatabinding();
 
-    }
-
-    @Override
-    public void initViewObservable() {
-
-    }
-
-    public boolean onBackPressed() {
-        return false;
-    }
+    public abstract void initView();
 }
