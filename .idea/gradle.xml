@@ -11,9 +11,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/moddle_main" />
-            <option value="$PROJECT_DIR$/module_account" />
-            <option value="$PROJECT_DIR$/pdf_module" />
-            <option value="$PROJECT_DIR$/standbycredit" />
+            <option value="$PROJECT_DIR$/module_account_mvvm" />
+            <option value="$PROJECT_DIR$/rxjavademo" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

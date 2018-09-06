@@ -65,10 +65,6 @@ public class GirlsFragment extends BaseFragment {
         initAdapter();
     }
 
-
-
-
-
     private void initAdapter() {
         mAdapter = new GrilsAdapter(R.layout.item_girls_layout, null);
         mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
