@@ -2,20 +2,15 @@ package com.android.common.mvp;
 
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.android.common.util.MaterialDialogUtils;
+
 
 /**
  * 基类
  */
+
 /***************使用例子*********************/
 //1.mvp模式
 //public class SampleActivity extends BaseActivity<NewsChanelPresenter, NewsChannelModel>implements NewsChannelContract.View {
@@ -48,21 +43,21 @@ import com.android.common.util.MaterialDialogUtils;
 //    public void initView() {
 //    }
 //}
-public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel> extends AppCompatActivity {
+public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel> extends RxAppCompatActivity {
     public T mPresenter;
     public E mModel;
     public Context mContext;
 
 
-        @Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
+        setContentView(getContentView());
         mContext = this;
         mPresenter = TUtil.getT(this, 0);
-        mModel=TUtil.getT(this,1);
-        if(mPresenter!=null){
-            mPresenter.mContext=this;
+        mModel = TUtil.getT(this, 1);
+        if (mPresenter != null) {
+            mPresenter.mContext = this;
         }
         this.initPresenter();
         this.initView();
@@ -70,9 +65,11 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 
 
     //获取布局文件
-    public abstract int getLayoutId();
+    public abstract int getContentView();
+
     //简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
     public abstract void initPresenter();
+
     //初始化view
     public abstract void initView();
 
@@ -87,32 +84,5 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 
     }
 
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-
-    private MaterialDialog dialog;
-
-    public void showDialog() {
-        showDialog("请稍后...");
-    }
-
-    public void showDialog(String title) {
-        if (dialog != null) {
-            dialog.show();
-        } else {
-            MaterialDialog.Builder builder = MaterialDialogUtils.showIndeterminateProgressDialog(this, title, true);
-            dialog = builder.show();
-        }
-    }
-
-    public void dismissDialog() {
-        if (dialog != null && dialog.isShowing()) {
-            dialog.dismiss();
-        }
-    }
 
 }

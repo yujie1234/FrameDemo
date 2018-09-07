@@ -2,13 +2,14 @@ package com.android.common.mvp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.common.util.MaterialDialogUtils;
+import com.trello.rxlifecycle2.components.support.RxFragment;
+
 
 /**
  * des:基类fragment
@@ -48,16 +49,16 @@ import com.android.common.util.MaterialDialogUtils;
 //    public void initView() {
 //    }
 //}
-public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel> extends Fragment {
+public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel> extends RxFragment {
     protected View rootView;
     public T mPresenter;
     public E mModel;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (rootView == null)
-            rootView = inflater.inflate(getLayoutResource(), container, false);
+        if (rootView == null){
+            rootView = inflater.inflate(getContentView(), container, false);
+        }
         mPresenter = TUtil.getT(this, 0);
         mModel = TUtil.getT(this, 1);
         if (mPresenter != null) {
@@ -69,25 +70,13 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
     }
 
     //获取布局文件
-    protected abstract int getLayoutResource();
+    protected abstract int getContentView();
 
     //简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
     public abstract void initPresenter();
 
     //初始化view
     protected abstract void initView();
-
-
-
-
-
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-
-
 
     private MaterialDialog dialog;
 

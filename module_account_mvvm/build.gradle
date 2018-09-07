@@ -4,15 +4,9 @@ if (isModule.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 
-
 android {
 
-    dataBinding {
-        enabled true
-    }
-
     compileSdkVersion compile_sdk_version
-//    buildToolsVersion build_tools_version
     defaultConfig {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
@@ -65,4 +59,7 @@ dependencies {
 
     //需要被跳转的模块或者说使用了ARouter注解的模块都要加上这个
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouter_compiler_version"
+
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

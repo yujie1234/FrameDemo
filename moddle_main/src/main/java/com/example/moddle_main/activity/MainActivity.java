@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -19,7 +18,7 @@ import com.android.common.util.ScreenUtils;
 import com.android.common.util.StringUtils;
 import com.android.common.util.ToastUtils;
 import com.example.moddle_main.R;
-import com.example.moddle_main.fragment.GirlsFragment;
+import com.example.moddle_main.fragment.girls.GirlsFragment;
 import com.example.moddle_main.fragment.HomeFragment;
 import com.example.moddle_main.fragment.MineFragment;
 

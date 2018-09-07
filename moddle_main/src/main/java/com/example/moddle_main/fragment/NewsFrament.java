@@ -4,35 +4,25 @@ import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.android.common.base.BaseFragment;
 import com.android.common.constant.ApiService;
-import com.android.common.okgo.JsonCallBack;
 import com.android.common.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.moddle_main.R;
-import com.example.moddle_main.adapter.GrilsAdapter;
 import com.example.moddle_main.adapter.NewListAdapter;
-import com.example.moddle_main.bean.GirlsBean;
 import com.example.moddle_main.bean.NewsItemBean;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

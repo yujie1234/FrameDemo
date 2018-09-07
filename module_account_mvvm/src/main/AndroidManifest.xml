@@ -4,10 +4,10 @@
 
     <application>
         <activity
-            android:name=".ui.activity.LoginActivity"
+            android:name=".ui.activity.login.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.RegisterActivity"
+            android:name=".ui.activity.register.RegisterActivity"
             android:label="@string/title_activity_register"/>
     </application>
 

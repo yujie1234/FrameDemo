@@ -1,5 +1,6 @@
 package com.android.common.mvp;
 
+import android.app.Activity;
 import android.content.Context;
 /**
  * des:基类presenter

@@ -69,7 +69,7 @@ dependencies {
     implementation project(':common')
     if (!isModule.toBoolean()) {
         implementation project(':moddle_main')
-        implementation project(':module_account')
+        implementation project(':module_account_mvvm')
     }
 
 }
